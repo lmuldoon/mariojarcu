@@ -1,0 +1,16 @@
+.site-logo {
+    position: relative;
+    z-index: 2;
+    display: block;
+    color: var(--menu-text-color);
+
+    svg {
+        display: block;
+        height: 55px;
+        width: auto;
+        transition: 0.3s all ease;
+        @screen sm {
+            height: 65px;
+        }
+    }
+}

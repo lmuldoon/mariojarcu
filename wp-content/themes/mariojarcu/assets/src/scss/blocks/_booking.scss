@@ -1,0 +1,119 @@
+// =============================================
+// BOOKING PAGE — info strip + Booksy embed
+// =============================================
+
+.info-strip {
+    background-color: var(--color-ink);
+    border-bottom: 1px solid rgba(237, 231, 220, 0.1);
+    padding-block: 30px;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 56px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__label {
+        @apply font-kicker;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+    }
+
+    &__value {
+        font-family: var(--font-body);
+        font-size: 15px;
+        color: var(--color-white);
+    }
+}
+
+.booking-embed {
+    padding-block: clamp(3rem, 6vw, 4rem) clamp(4.5rem, 8vw, 6rem);
+
+    &__status {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    &__status-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: #3fae6b;
+        box-shadow: 0 0 0 4px rgba(63, 174, 107, 0.2);
+    }
+
+    &__status-text {
+        @apply font-kicker;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-white);
+        flex: 1;
+    }
+
+    &__open-link {
+        padding: 0.6em 1.3em;
+        font-size: 12px;
+    }
+
+    &__frame {
+        position: relative;
+        background-color: var(--color-white);
+        border: 1px solid rgba(237, 231, 220, 0.15);
+        border-radius: 8px;
+        overflow: hidden;
+        min-height: 760px;
+    }
+
+    &__fallback {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+        padding: 2rem;
+
+        img {
+            opacity: 0.55;
+        }
+
+        p {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--color-muted);
+            margin: 0;
+        }
+    }
+
+    &__iframe {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 760px;
+        border: 0;
+        background: transparent;
+    }
+
+    &__note {
+        font-family: var(--font-body);
+        font-size: 13px;
+        color: rgba(237, 231, 220, 0.5);
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+}

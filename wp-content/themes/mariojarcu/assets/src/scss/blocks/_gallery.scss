@@ -1,0 +1,123 @@
+// =============================================
+// GALLERY — masonry grid + lightbox
+// =============================================
+
+.gallery-masonry {
+    padding-block: clamp(3rem, 6vw, 4rem) clamp(4rem, 8vw, 6.5rem);
+
+    &__grid {
+        column-count: 1;
+        column-gap: 18px;
+
+        @screen md {
+            column-count: 2;
+        }
+
+        @screen lg {
+            column-count: 3;
+        }
+    }
+
+    &__empty {
+        font-family: var(--font-body);
+        color: var(--color-muted);
+        text-align: center;
+        padding-block: 2rem;
+    }
+}
+
+.gallery-tile {
+    position: relative;
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 18px;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 4px;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(10, 10, 10, 0.75), transparent 55%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+
+        &::after {
+            opacity: 1;
+        }
+
+        .gallery-tile__tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__tag {
+        @apply font-kicker;
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-white);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+}
+
+.gallery-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background-color: rgba(10, 10, 10, 0.94);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    &.is-open {
+        display: flex;
+    }
+
+    &__img {
+        display: block;
+        max-width: 92vw;
+        max-height: 88vh;
+        border-radius: 4px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    &__close {
+        @apply font-kicker;
+        position: absolute;
+        top: 24px;
+        right: 30px;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-white);
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-gold);
+        }
+    }
+}

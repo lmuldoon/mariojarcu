@@ -1,0 +1,113 @@
+// =============================================
+// CARD GRID
+// 3-column service card grid with image, hover lift.
+// =============================================
+
+.card-grid {
+
+    &--3col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+
+        @screen md {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @screen lg {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &__item {
+        display: block;
+        background-color: var(--color-ink);
+        border: 1px solid rgba(237, 231, 220, 0.1);
+        border-radius: 6px;
+        overflow: hidden;
+        // transform is intentionally excluded here — see &:hover. The
+        // scroll-reveal animation (GSAP, via .animated) also drives transform
+        // on these cards directly; an unconditional CSS transition on the
+        // same property fights that JS animation and produces a visible
+        // "down then up" stutter as the card enters the viewport.
+        transition: border-color 0.3s ease;
+
+        &:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-4px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+
+            .card-grid__media img {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &__media {
+        aspect-ratio: 3 / 2;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+    }
+
+    &__body {
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+    }
+
+    &__title {
+        @apply font-heading;
+        font-weight: 700;
+        font-size: 21px;
+        text-transform: uppercase;
+        color: var(--color-white);
+        margin: 0;
+    }
+
+    &__price {
+        @apply font-heading;
+        font-weight: 700;
+        font-size: 21px;
+        color: var(--color-gold);
+        flex-shrink: 0;
+    }
+
+    &__desc {
+        font-family: var(--font-body);
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: rgba(237, 231, 220, 0.7);
+        margin: 0;
+    }
+
+    &__meta {
+        @apply font-kicker;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(237, 231, 220, 0.4);
+        margin: 0;
+    }
+
+    &__footer {
+        @apply font-kicker;
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+    }
+}

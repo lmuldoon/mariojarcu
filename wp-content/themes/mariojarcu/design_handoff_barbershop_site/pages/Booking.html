@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;padding:0;background:#131313;}
+  .mj-link{position:relative;}
+  .mj-link::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:#D4AC52;transition:width .28s ease;}
+  .mj-link:hover::after{width:100%;}
+  .mj-cta{transition:background .2s ease,transform .2s ease;}
+  .mj-cta:hover{background:#D4AC52 !important;transform:translateY(-1px);}
+  .mj-ghost{transition:background .2s ease,color .2s ease,border-color .2s ease;}
+  .mj-ghost:hover{background:#EDE7DC !important;color:#131313 !important;border-color:#EDE7DC !important;}
+</style>
+</helmet>
+
+<div style="font-family:'Montserrat',sans-serif;background:#131313;color:#EDE7DC;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(19,19,19,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,231,220,0.1);">
+    <nav style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px;">
+      <a href="Homepage.html" style="display:flex;align-items:center;"><img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:46px;width:auto;display:block;"></a>
+      <div style="display:flex;align-items:center;gap:38px;">
+        <a href="Homepage.html#location" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Location</a>
+        <a href="Homepage.html#services" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Services</a>
+        <a href="Homepage.html#gallery" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Gallery</a>
+        <a href="#book" class="mj-cta" style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:13px 24px;border-radius:3px;white-space:nowrap;">Book Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section style="position:relative;border-bottom:1px solid rgba(237,231,220,0.1);background-image:linear-gradient(rgba(19,19,19,0.86),rgba(19,19,19,0.86)),url('../assets/detail.jpg');background-size:cover;background-position:center 30%;background-repeat:no-repeat;">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:84px 40px 72px;">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#E3C57C;margin-bottom:24px;">Booking</div>
+      <h1 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(40px,6vw,80px);line-height:0.96;letter-spacing:-0.02em;margin:0 0 24px;text-transform:uppercase;color:#F4EFE6;">Book your chair</h1>
+      <p style="font-size:18px;line-height:1.65;color:rgba(237,231,220,0.78);margin:0;max-width:560px;text-wrap:pretty;">Appointments run through Booksy below — pick your service, choose a time, and you're set. It's one chair, so slots go quickly; booking ahead is the surest way in.</p>
+    </div>
+  </section>
+
+  <!-- ============ INFO STRIP ============ -->
+  <section style="background:#1B1B1B;border-bottom:1px solid rgba(237,231,220,0.1);">
+    <div style="max-width:1280px;margin:0 auto;padding:30px 40px;display:flex;flex-wrap:wrap;gap:18px 56px;">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;">Where</span>
+        <span style="font-size:15px;color:#EDE7DC;">12 High Street, Northampton, NN1 1AB</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;">Hours</span>
+        <span style="font-size:15px;color:#EDE7DC;">Tue&ndash;Fri 9&ndash;6 &middot; Sat 8&ndash;4 &middot; Sun&ndash;Mon closed</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;">Good to know</span>
+        <span style="font-size:15px;color:#EDE7DC;">Appointment only &middot; please arrive on time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKSY EMBED ============ -->
+  <section id="book" style="background:#131313;padding:64px 40px 96px;flex:1;">
+    <div style="max-width:1040px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:#3Fae6b;box-shadow:0 0 0 4px rgba(63,174,107,0.2);"></span>
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,231,220,0.7);">Live availability via Booksy</span>
+        </div>
+        <a href="https://booksy.com" target="_blank" rel="noopener" class="mj-ghost" style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;border:1px solid rgba(237,231,220,0.4);padding:11px 22px;border-radius:3px;background:transparent;white-space:nowrap;">Open in Booksy &nbsp;&#8599;</a>
+      </div>
+
+      <!-- Booksy widget container -->
+      <div style="position:relative;background:#EDE7DC;border:1px solid rgba(237,231,220,0.14);border-radius:8px;overflow:hidden;min-height:760px;">
+        <!-- Fallback shown behind the iframe; visible only if the embed fails to load -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;padding:40px;z-index:0;">
+          <img src="../assets/logo-v3-light.svg" alt="Mario Jarcu — Salon Concept" style="height:62px;width:auto;opacity:0.55;">
+          <p style="font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.6;color:#57514A;margin:0;max-width:380px;">Loading the booking calendar&hellip; if it doesn't appear, tap below to book on Booksy directly.</p>
+          <a href="https://booksy.com" target="_blank" rel="noopener" class="mj-cta" style="font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:15px 30px;border-radius:3px;">Book on Booksy</a>
+        </div>
+        <!-- REPLACE the src below with Mario's real Booksy business / widget URL -->
+        <iframe
+          src="{{ booksyUrl }}"
+          title="Book with Mario Jarcu on Booksy"
+          loading="lazy"
+          style="position:relative;z-index:1;width:100%;height:760px;border:0;display:block;background:transparent;">
+        </iframe>
+      </div>
+
+      <p style="font-size:13px;line-height:1.6;color:rgba(237,231,220,0.45);margin:18px 0 0;text-align:center;">Secure booking powered by Booksy. You'll get a confirmation and reminders by text.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#0E0E0E;border-top:1px solid rgba(237,231,220,0.1);padding:72px 40px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(237,231,220,0.1);">
+        <div>
+          <img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:54px;width:auto;display:block;margin-bottom:24px;">
+          <p style="font-size:15px;line-height:1.65;color:rgba(237,231,220,0.55);margin:0;max-width:330px;text-wrap:pretty;">Master barber, one chair. Precision cuts, sharp beards and traditional shaves — by appointment.</p>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Explore</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="Homepage.html#services" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Services</a>
+            <a href="Homepage.html#gallery" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Gallery</a>
+            <a href="Homepage.html#location" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Location</a>
+            <a href="#book" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Book Now</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Get in touch</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">@mario.jarcu</a>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">12 High Street, Northampton</span>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">Tue&ndash;Sat &middot; by appointment</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:28px;">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">&copy; 2026 Mario Jarcu &middot; Barber</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">Northampton, UK</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;},&quot;booksyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://booksy.com/en-gb/&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    // ▼▼▼ Replace this with Mario's real Booksy business or widget URL ▼▼▼
+    // e.g. "https://booksy.com/en-gb/123456_mario-jarcu-barber"
+    const booksyUrl = this.props.booksyUrl ?? "https://booksy.com/en-gb/";
+    return { booksyUrl };
+  }
+}
+</script>
+</body>
+</html>

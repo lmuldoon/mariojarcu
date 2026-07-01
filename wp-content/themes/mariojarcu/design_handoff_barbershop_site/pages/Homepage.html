@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;padding:0;background:#131313;}
+  .mj-link{position:relative;}
+  .mj-link::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:#D4AC52;transition:width .28s ease;}
+  .mj-link:hover::after{width:100%;}
+  .mj-cta{transition:background .2s ease,transform .2s ease;}
+  .mj-cta:hover{background:#D4AC52 !important;transform:translateY(-1px);}
+  .mj-svc{transition:transform .3s ease,border-color .3s ease;}
+  .mj-svc:hover{transform:translateY(-4px);border-color:rgba(163,48,65,0.6) !important;}
+  .mj-svc:hover .mj-svc-img{transform:scale(1.05);}
+  .mj-ghost{transition:background .2s ease,color .2s ease,border-color .2s ease;}
+  .mj-ghost:hover{background:#EDE7DC !important;color:#131313 !important;}
+  .leaflet-container{background:#0e0e0e !important;font-family:'Montserrat',sans-serif;}
+  .leaflet-control-attribution{background:rgba(19,19,19,0.7) !important;color:#7a756c !important;}
+  .leaflet-control-attribution a{color:#9a9488 !important;}
+  .leaflet-bar a{background:#1b1b1b !important;color:#EDE7DC !important;border-color:#333 !important;}
+  .leaflet-bar a:hover{background:#8C6E24 !important;}
+</style>
+</helmet>
+
+<div style="font-family:'Montserrat',sans-serif;background:#131313;color:#EDE7DC;overflow-x:hidden;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(19,19,19,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,231,220,0.1);">
+    <nav style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px;">
+      <a href="#top" style="display:flex;align-items:center;"><img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:46px;width:auto;display:block;"></a>
+      <div style="display:flex;align-items:center;gap:38px;">
+        <a href="#location" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Location</a>
+        <a href="Services.html" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Services</a>
+        <a href="Gallery.html" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Gallery</a>
+        <a href="Booking.html" class="mj-cta" style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:13px 24px;border-radius:3px;white-space:nowrap;">Book Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position:relative;min-height:calc(100vh - 78px);display:flex;align-items:flex-end;background-image:linear-gradient(180deg,rgba(19,19,19,0.5) 0%,rgba(19,19,19,0.18) 38%,rgba(19,19,19,0.82) 84%,#131313 100%),url('../assets/hero.jpg');background-size:cover;background-position:center 28%;background-repeat:no-repeat;">
+    <div style="position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;padding:0 40px 88px;">
+      <div style="max-width:760px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#E3C57C;margin-bottom:26px;">By appointment &middot; One chair</div>
+        <h1 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(48px,7vw,104px);line-height:0.94;letter-spacing:-0.02em;margin:0 0 28px;text-transform:uppercase;color:#F4EFE6;text-wrap:balance;">The cut,<br>done <span style="color:#D4AC52;">properly.</span></h1>
+        <p style="font-size:19px;line-height:1.6;color:rgba(237,231,220,0.82);margin:0 0 38px;max-width:540px;text-wrap:pretty;">Mario Jarcu is a master barber working a single chair — fully booked on word of mouth alone. Precision cuts, sharp beard work, and the kind of hot-towel shave most shops stopped doing years ago.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;">
+          <a href="Booking.html" class="mj-cta" style="font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:18px 34px;border-radius:3px;">Book your chair</a>
+          <a href="#services" class="mj-ghost" style="font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;border:1px solid rgba(237,231,220,0.45);padding:18px 34px;border-radius:3px;background:transparent;">View services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE STRIP ============ -->
+  <div style="background:#C39A43;border-top:1px solid rgba(0,0,0,0.2);border-bottom:1px solid rgba(0,0,0,0.2);overflow:hidden;">
+    <div style="max-width:1280px;margin:0 auto;padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 40px;">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;NaN#1A150B;">Skin Fades</span>
+      <span style="color:#6E5418;">&#9733;</span>
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;NaN#1A150B;">Beard Sculpting</span>
+      <span style="color:#6E5418;">&#9733;</span>
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;NaN#1A150B;">Hot Towel Shaves</span>
+      <span style="color:#6E5418;">&#9733;</span>
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;NaN#1A150B;">Restyles</span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" style="background:#EDE7DC;color:#1C1813;padding:120px 40px;">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+      <div style="position:relative;">
+        <div style="aspect-ratio:4/5;background-image:url('../assets/shave.jpg');background-size:cover;background-position:center;border-radius:4px;"></div>
+        <div style="position:absolute;left:-22px;bottom:-22px;background:#131313;color:#EDE7DC;padding:22px 28px;border-radius:4px;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#D4AC52;">15<span style="font-size:20px;">+</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(237,231,220,0.7);margin-top:6px;">Years at<br>the chair</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:#8C6E24;margin-bottom:24px;">The barber</div>
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 28px;text-transform:uppercase;">Trained in Romania.<br>Honed on the floor.</h2>
+        <p style="font-size:17px;line-height:1.7;color:#57514A;margin:0 0 20px;text-wrap:pretty;">Mario learned the trade in Romania and sharpened it in some of the most exacting barbershops in the business — the kind where a fade is measured in millimetres and a shave is a ritual, not a rush.</p>
+        <p style="font-size:17px;line-height:1.7;color:#57514A;margin:0 0 20px;text-wrap:pretty;">Today he works for himself, one chair, no assistants, no shortcuts. He doesn't advertise. He's booked weeks out all the same — because the work speaks, and the people he cuts for keep sending their friends.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px;line-height:1.4;color:#1C1813;margin:32px 0 0;border-left:2px solid #8C6E24;padding-left:22px;text-wrap:pretty;">&ldquo;One chair means you get all of my attention — and none of the rush.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" style="background:#131313;padding:120px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:64px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:#E3C57C;margin-bottom:22px;">What I do</div>
+          <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:-0.015em;margin:0;text-transform:uppercase;color:#F4EFE6;">The services</h2>
+        </div>
+        <a href="Services.html" class="mj-link" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;white-space:nowrap;">View full price list &nbsp;&rarr;</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/cut.jpg');background-size:cover;background-position:center;transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Skin Fade</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;25</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">A clean, seamless fade tailored to your head shape and finished sharp at the edges.</p>
+          </div>
+        </article>
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/beard.jpg');background-size:cover;background-position:center;transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Cut &amp; Beard</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;35</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">Full haircut paired with a sculpted beard line — the complete reset, start to finish.</p>
+          </div>
+        </article>
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/hot-towel.jpg');background-size:cover;background-position:center;transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Hot Towel Shave</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;28</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">Traditional straight-razor shave with hot towels and steam. Slow, precise, worth it.</p>
+          </div>
+        </article>
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/detail.jpg');background-size:cover;background-position:center;transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Cut &amp; Style</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;22</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">Scissor or clipper cut shaped to suit you, washed and styled the way you'll wear it.</p>
+          </div>
+        </article>
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/steam.jpg');background-size:cover;background-position:center;transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Beard Sculpt</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;15</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">Shape, line and trim with hot-towel finish — tidy, defined and properly conditioned.</p>
+          </div>
+        </article>
+
+        <article class="mj-svc" style="background:#1B1B1B;border:1px solid rgba(237,231,220,0.1);border-radius:6px;overflow:hidden;">
+          <div style="aspect-ratio:3/2;overflow:hidden;"><div class="mj-svc-img" style="width:100%;height:100%;background-image:url('../assets/hero.jpg');background-size:cover;background-position:center 25%;filter:grayscale(100%);transition:transform .4s ease;"></div></div>
+          <div style="padding:26px 26px 30px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px;"><h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;margin:0;text-transform:uppercase;letter-spacing:0.01em;">Restyle</h3><span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:21px;color:#D4AC52;white-space:nowrap;">&pound;30</span></div>
+            <p style="font-size:14.5px;line-height:1.6;color:rgba(237,231,220,0.6);margin:0;">Changing it up? A longer consultation to map out and execute a whole new direction.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section id="reviews" style="background:#EDE7DC;color:#1C1813;padding:120px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="text-align:center;max-width:640px;margin:0 auto 64px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:#8C6E24;margin-bottom:20px;">Booked on reputation</div>
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:-0.015em;margin:0 0 18px;text-transform:uppercase;">What they say</h2>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;"><span style="color:#8C6E24;letter-spacing:3px;font-size:18px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span style="font-size:14px;color:#8A8377;font-weight:500;">5.0 &middot; word of mouth, every time</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+        <figure style="background:#FFFFFF;border:1px solid #E2DCCF;border-radius:6px;padding:34px 30px;margin:0;display:flex;flex-direction:column;gap:18px;">
+          <span style="color:#8C6E24;letter-spacing:2px;font-size:15px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <blockquote style="font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.42;color:#1C1813;margin:0;text-wrap:pretty;">&ldquo;Best barber I've ever sat with. Worth every minute of the wait — I won't go anywhere else now.&rdquo;</blockquote>
+          <figcaption style="margin-top:auto;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8377;">Daniel R. &middot; Regular</figcaption>
+        </figure>
+
+        <figure style="background:#FFFFFF;border:1px solid #E2DCCF;border-radius:6px;padding:34px 30px;margin:0;display:flex;flex-direction:column;gap:18px;">
+          <span style="color:#8C6E24;letter-spacing:2px;font-size:15px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <blockquote style="font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.42;color:#1C1813;margin:0;text-wrap:pretty;">&ldquo;The attention to detail is something else. Proper old-school shave, modern fade. A real craftsman.&rdquo;</blockquote>
+          <figcaption style="margin-top:auto;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8377;">James P. &middot; Hot towel shave</figcaption>
+        </figure>
+
+        <figure style="background:#FFFFFF;border:1px solid #E2DCCF;border-radius:6px;padding:34px 30px;margin:0;display:flex;flex-direction:column;gap:18px;">
+          <span style="color:#8C6E24;letter-spacing:2px;font-size:15px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <blockquote style="font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.42;color:#1C1813;margin:0;text-wrap:pretty;">&ldquo;Found Mario through a mate and now I send everyone his way. One chair, full focus, perfect cut.&rdquo;</blockquote>
+          <figcaption style="margin-top:auto;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8377;">Andrei M. &middot; Cut &amp; beard</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCATION ============ -->
+  <section id="location" style="background:#131313;padding:120px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:stretch;">
+
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:#E3C57C;margin-bottom:22px;">Find the chair</div>
+          <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:-0.015em;margin:0 0 36px;text-transform:uppercase;color:#F4EFE6;">Visit the shop</h2>
+
+          <div style="display:flex;flex-direction:column;gap:30px;">
+            <div>
+              <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:10px;">Address</div>
+              <p style="font-size:18px;line-height:1.6;color:#EDE7DC;margin:0;">12 High Street<br>Northampton, NN1 1AB</p>
+            </div>
+
+            <div>
+              <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:12px;">Opening hours</div>
+              <div style="display:flex;flex-direction:column;gap:9px;max-width:330px;">
+                <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(237,231,220,0.1);padding-bottom:9px;"><span style="color:rgba(237,231,220,0.78);font-size:15px;">Tuesday &ndash; Friday</span><span style="font-weight:600;font-size:15px;">9:00 &ndash; 18:00</span></div>
+                <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(237,231,220,0.1);padding-bottom:9px;"><span style="color:rgba(237,231,220,0.78);font-size:15px;">Saturday</span><span style="font-weight:600;font-size:15px;">8:00 &ndash; 16:00</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="color:rgba(237,231,220,0.78);font-size:15px;">Sunday &ndash; Monday</span><span style="font-weight:600;font-size:15px;color:#9a766c;">Closed</span></div>
+              </div>
+            </div>
+
+            <a href="Booking.html" class="mj-cta" style="align-self:flex-start;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:17px 32px;border-radius:3px;margin-top:4px;">Book an appointment</a>
+          </div>
+        </div>
+
+        <div style="min-height:440px;border-radius:6px;overflow:hidden;border:1px solid rgba(237,231,220,0.12);">
+          <div ref="{{ mapRef }}" style="width:100%;height:100%;min-height:440px;"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#0E0E0E;border-top:1px solid rgba(237,231,220,0.1);padding:72px 40px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(237,231,220,0.1);">
+        <div>
+          <img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:54px;width:auto;display:block;margin-bottom:24px;">
+          <p style="font-size:15px;line-height:1.65;color:rgba(237,231,220,0.55);margin:0;max-width:330px;text-wrap:pretty;">Master barber, one chair. Precision cuts, sharp beards and traditional shaves — by appointment.</p>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Explore</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="Services.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Services</a>
+            <a href="Gallery.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Gallery</a>
+            <a href="#location" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Location</a>
+            <a href="Booking.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Book Now</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Get in touch</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">@mario.jarcu</a>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">12 High Street, Northampton</span>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">Tue&ndash;Sat &middot; by appointment</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:28px;">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">&copy; 2026 Mario Jarcu &middot; Barber</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">Northampton, UK</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { mapRef: (el) => { this._mapEl = el; } };
+  }
+
+  componentDidMount() {
+    this._tries = 0;
+    this._initMap();
+  }
+
+  _initMap() {
+    const el = this._mapEl;
+    if (!el || !window.L) {
+      if (this._tries++ < 60) { setTimeout(() => this._initMap(), 120); }
+      return;
+    }
+    if (this._map) return;
+    const coords = [52.2372, -0.8938]; // Northampton (placeholder)
+    const map = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView(coords, 15);
+    this._map = map;
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(map);
+
+    const icon = L.divIcon({
+      className: '',
+      html: '<div style="width:22px;height:22px;border-radius:50%;background:#8C6E24;border:3px solid #EDE7DC;box-shadow:0 0 0 6px rgba(163,48,65,0.3),0 4px 12px rgba(0,0,0,0.5);"></div>',
+      iconSize: [22, 22],
+      iconAnchor: [11, 11]
+    });
+    L.marker(coords, { icon }).addTo(map)
+      .bindPopup('<strong>Mario Jarcu — Barber</strong><br>12 High Street, Northampton');
+
+    setTimeout(() => map.invalidateSize(), 200);
+  }
+}
+</script>
+</body>
+</html>

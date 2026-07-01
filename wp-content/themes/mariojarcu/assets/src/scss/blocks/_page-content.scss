@@ -1,0 +1,65 @@
+// =============================================
+// GENERIC PAGE (page.php) — title band + readable content area
+// =============================================
+
+.page-banner {
+    background-color: var(--color-black);
+    border-bottom: 1px solid rgba(237, 231, 220, 0.1);
+    padding-block: clamp(3rem, 7vw, 5rem);
+
+    &__title {
+        @apply font-heading;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        letter-spacing: -0.02em;
+        color: var(--color-cream-heading);
+        margin: 0;
+    }
+}
+
+.page-content__body {
+    padding-block: clamp(3rem, 7vw, 5rem);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-muted);
+
+    h1, h2, h3, h4 {
+        color: var(--color-ink-text);
+        margin-top: 1.8em;
+        margin-bottom: 0.6em;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    p {
+        margin: 0 0 1.25em;
+    }
+
+    ul:not([class]),
+    ol:not([class]) {
+        margin: 0 0 1.25em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    a {
+        color: var(--color-gold-dark);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--color-gold);
+        }
+    }
+
+    strong, b {
+        color: var(--color-ink-text);
+    }
+}

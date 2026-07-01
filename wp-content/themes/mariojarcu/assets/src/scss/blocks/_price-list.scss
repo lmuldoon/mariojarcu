@@ -1,0 +1,90 @@
+// =============================================
+// PRICE LIST — Services page
+// =============================================
+
+.price-list {
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+
+    &__columns {
+        column-count: 1;
+        column-gap: 5rem;
+
+        @screen md {
+            column-count: 2;
+        }
+    }
+}
+
+.price-group {
+    break-inside: avoid;
+    margin-bottom: 3rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+
+        .kicker {
+            margin: 0;
+            white-space: nowrap;
+        }
+    }
+
+    &__rule {
+        flex: 1;
+        height: 1px;
+        background-color: rgba(28, 24, 19, 0.1);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.price-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 16px;
+    border-bottom: 1px solid rgba(28, 24, 19, 0.1);
+    transition: padding-left 0.25s ease;
+
+    &:hover {
+        padding-left: 8px;
+
+        .price-row__name {
+            color: var(--color-gold-dark);
+        }
+    }
+
+    &__name {
+        @apply font-heading;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: var(--color-ink-text);
+        transition: color 0.25s ease;
+    }
+
+    &__meta {
+        font-family: var(--font-body);
+        font-size: 13.5px;
+        color: var(--color-muted);
+        margin-top: 0.25rem;
+    }
+
+    &__price {
+        @apply font-heading;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--color-gold-dark);
+        flex-shrink: 0;
+    }
+}

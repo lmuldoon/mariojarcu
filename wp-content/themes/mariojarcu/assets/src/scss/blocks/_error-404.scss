@@ -1,0 +1,49 @@
+// =============================================
+// 404 — NOT FOUND
+// =============================================
+
+.error-404 {
+    min-height: calc(100vh - 78px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black);
+    padding-block: clamp(4rem, 10vw, 7rem);
+
+    &__code {
+        @apply font-kicker;
+        font-size: 13px;
+        letter-spacing: 0.4em;
+        color: var(--color-gold);
+        margin: 0 0 1rem;
+    }
+
+    &__title {
+        @apply font-heading;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: clamp(2.25rem, 5.5vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--color-cream-heading);
+        margin: 0 0 1.25rem;
+    }
+
+    &__lead {
+        font-family: var(--font-body);
+        font-size: 17px;
+        line-height: 1.65;
+        color: var(--color-white);
+        max-width: 46ch;
+        margin: 0 auto;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2.25rem;
+    }
+}

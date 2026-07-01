@@ -1,0 +1,25 @@
+.ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--color-gold-dark);
+    margin-bottom: 1.25rem;
+
+    &__line {
+        height: 1px;
+        width: 80px;
+        background: linear-gradient(90deg, transparent, currentColor 50%, transparent);
+    }
+
+    &__diamond {
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+        background: currentColor;
+        flex-shrink: 0;
+    }
+    .bg-black & {
+        color: var(--color-gold);
+    }
+}

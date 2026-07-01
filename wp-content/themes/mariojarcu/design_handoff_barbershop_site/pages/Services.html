@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;padding:0;background:#131313;}
+  .mj-link{position:relative;}
+  .mj-link::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:0;background:#D4AC52;transition:width .28s ease;}
+  .mj-link:hover::after{width:100%;}
+  .mj-cta{transition:background .2s ease,transform .2s ease;}
+  .mj-cta:hover{background:#D4AC52 !important;transform:translateY(-1px);}
+  .mj-ghost{transition:background .2s ease,color .2s ease,border-color .2s ease;}
+  .mj-ghost:hover{background:#131313 !important;color:#EDE7DC !important;border-color:#131313 !important;}
+  .mj-row{transition:padding-left .25s ease;}
+  .mj-row:hover{padding-left:8px;}
+  .mj-row:hover .mj-row-name{color:#8C6E24;}
+</style>
+</helmet>
+
+<div style="font-family:'Montserrat',sans-serif;background:#131313;color:#EDE7DC;overflow-x:hidden;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(19,19,19,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,231,220,0.1);">
+    <nav style="max-width:1280px;margin:0 auto;padding:0 40px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px;">
+      <a href="Homepage.html" style="display:flex;align-items:center;"><img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:46px;width:auto;display:block;"></a>
+      <div style="display:flex;align-items:center;gap:38px;">
+        <a href="Homepage.html#location" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Location</a>
+        <a href="Services.html" class="mj-link" style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E3C57C;text-decoration:none;">Services</a>
+        <a href="Gallery.html" class="mj-link" style="font-size:13px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#EDE7DC;text-decoration:none;">Gallery</a>
+        <a href="Booking.html" class="mj-cta" style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#C39A43;padding:13px 24px;border-radius:3px;white-space:nowrap;">Book Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section style="position:relative;border-bottom:1px solid rgba(237,231,220,0.1);background-image:linear-gradient(rgba(19,19,19,0.85),rgba(19,19,19,0.85)),url('../assets/cut.jpg');background-size:cover;background-position:center 35%;background-repeat:no-repeat;">
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:84px 40px 72px;">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#E3C57C;margin-bottom:24px;">Services &amp; pricing</div>
+      <h1 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(40px,6vw,80px);line-height:0.96;letter-spacing:-0.02em;margin:0 0 24px;text-transform:uppercase;color:#F4EFE6;">The full list</h1>
+      <p style="font-size:18px;line-height:1.65;color:rgba(237,231,220,0.78);margin:0;max-width:560px;text-wrap:pretty;">Every service is one barber, start to finish — no hand-offs, no rushing the finish. Prices are guides; a longer or more detailed job is quoted in the chair.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRICE LIST ============ -->
+  <section style="background:#EDE7DC;color:#1C1813;padding:104px 40px;">
+    <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px 80px;">
+
+      <!-- HAIR -->
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:30px;">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#8C6E24;">01 — Hair</span>
+          <span style="flex:1;height:1px;background:#1C1813;opacity:0.18;"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Skin Fade</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Seamless fade, sharp edges &middot; 45 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;25</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Cut &amp; Style</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Shaped, washed &amp; finished &middot; 40 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;22</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Scissor Cut</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Scissor-over-comb throughout &middot; 45 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;24</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Restyle</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Consultation &amp; new direction &middot; 60 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;30</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Kids Cut</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Under 12 &middot; 30 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;16</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Buzz / Clipper Grade</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">One length, clean finish &middot; 20 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;15</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEARD -->
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:30px;">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#8C6E24;">02 — Beard</span>
+          <span style="flex:1;height:1px;background:#1C1813;opacity:0.18;"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Beard Sculpt</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Shape, line &amp; hot-towel finish &middot; 25 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;15</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Beard Trim &amp; Line-up</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Tidy and defined &middot; 15 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;12</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Cut &amp; Beard</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Full haircut + sculpted beard &middot; 60 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;35</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;margin:48px 0 30px;">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#8C6E24;">03 — Shaves &amp; rituals</span>
+          <span style="flex:1;height:1px;background:#1C1813;opacity:0.18;"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(28,24,19,0.1);">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Hot Towel Shave</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Straight razor, towels &amp; steam &middot; 40 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;28</div>
+          </div>
+          <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:16px 0;">
+            <div style="flex:1;"><div class="mj-row-name" style="font-weight:700;font-size:18px;transition:color .25s ease;">Head Shave</div><div style="font-size:13.5px;color:#7C7567;margin-top:3px;">Smooth, close &amp; conditioned &middot; 30 min</div></div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#8C6E24;white-space:nowrap;">&pound;20</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FINISHING / ADD-ONS full width -->
+    <div style="max-width:1080px;margin:64px auto 0;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:#8C6E24;">04 — Finishing &amp; add-ons</span>
+        <span style="flex:1;height:1px;background:#1C1813;opacity:0.18;"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 60px;">
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(28,24,19,0.1);"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Line-up / Edge-up</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;10</div></div>
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(28,24,19,0.1);"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Grey Blending</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;12</div></div>
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(28,24,19,0.1);"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Wash &amp; Style</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;10</div></div>
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Hot Towel Add-on</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;8</div></div>
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Eyebrow Tidy</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;6</div></div>
+        <div class="mj-row" style="display:flex;align-items:baseline;gap:16px;padding:14px 0;"><div class="mj-row-name" style="flex:1;font-weight:600;font-size:16px;transition:color .25s ease;">Nose / Ear Wax</div><div style="font-weight:700;font-size:16px;color:#8C6E24;">&pound;8</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section style="background:#C39A43;padding:84px 40px;">
+    <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,42px);line-height:1.04;letter-spacing:-0.01em;margin:0;text-transform:uppercase;NaN#1A150B;">Ready when you are.</h2>
+        <p style="font-size:16px;line-height:1.6;color:rgba(26,21,11,0.80);margin:0;max-width:440px;">One chair, booked ahead. Pick your service and grab the next free slot on Booksy.</p>
+      </div>
+      <a href="Booking.html" class="mj-ghost" style="font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1A150B;text-decoration:none;background:#EDE7DC;border:1px solid #EDE7DC;padding:18px 36px;border-radius:3px;white-space:nowrap;">Book your chair</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#0E0E0E;border-top:1px solid rgba(237,231,220,0.1);padding:72px 40px 40px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(237,231,220,0.1);">
+        <div>
+          <img src="../assets/logo-lockup-dark.svg" alt="Mario Jarcu — Salon Concept" style="height:54px;width:auto;display:block;margin-bottom:24px;">
+          <p style="font-size:15px;line-height:1.65;color:rgba(237,231,220,0.55);margin:0;max-width:330px;text-wrap:pretty;">Master barber, one chair. Precision cuts, sharp beards and traditional shaves — by appointment.</p>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Explore</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="Services.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Services</a>
+            <a href="Gallery.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Gallery</a>
+            <a href="Homepage.html#location" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Location</a>
+            <a href="Booking.html" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">Book Now</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#D4AC52;margin-bottom:18px;">Get in touch</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="mj-link" style="font-size:15px;color:rgba(237,231,220,0.8);text-decoration:none;width:fit-content;">@mario.jarcu</a>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">12 High Street, Northampton</span>
+            <span style="font-size:15px;color:rgba(237,231,220,0.55);">Tue&ndash;Sat &middot; by appointment</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:28px;">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">&copy; 2026 Mario Jarcu &middot; Barber</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(237,231,220,0.4);">Northampton, UK</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

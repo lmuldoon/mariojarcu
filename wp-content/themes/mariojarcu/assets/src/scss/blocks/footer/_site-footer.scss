@@ -1,0 +1,158 @@
+// =============================================
+// SITE FOOTER
+// =============================================
+
+.site-footer {
+    border-top: 1px solid rgba(237, 231, 220, 0.1);
+    background-color: var(--color-carbon);
+    position: relative;
+    padding-block: 4rem;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: start;
+        padding-bottom: 3rem;
+
+        @screen md {
+            grid-template-columns: 1.75fr 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+    }
+
+    // --- Brand col ---
+
+    &__brand {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    &__logo {
+        display: block;
+
+        svg {
+            height: 60px;
+            width: auto;
+
+            @screen md {
+                height: 70px;
+            }
+        }
+    }
+
+    &__tagline {
+        @apply font-body;
+        font-size: var(--size-400);
+        color: rgba(237, 231, 220, 0.55);
+        line-height: 1.6;
+        max-width: 28ch;
+    }
+
+    // --- Columns ---
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    &__col-label {
+        @apply font-kicker;
+        font-size: var(--size-300);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        display: block;
+    }
+
+    // WordPress nav menu output
+    &__links,
+    ul.site-footer__links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        li a,
+        a {
+            @apply font-body;
+            font-size: var(--size-400);
+            color: rgba(237, 231, 220, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--color-white);
+            }
+        }
+    }
+
+    &__link {
+        @apply font-body;
+        font-size: var(--size-400);
+        color: rgba(237, 231, 220, 0.6);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--color-white);
+        }
+    }
+
+    // --- Address ---
+
+    &__address {
+        @apply font-body;
+        font-style: normal;
+        font-size: var(--size-400);
+        color: rgba(237, 231, 220, 0.6);
+        line-height: 1.8;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    // --- Bottom bar ---
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        border-top: 1px solid rgba(237, 231, 220, 0.1);
+        padding-top: 1.5rem;
+    }
+
+    &__copy {
+        @apply font-kicker;
+        font-size: var(--size-300);
+        letter-spacing: 0.08em;
+        color: rgba(237, 231, 220, 0.35);
+    }
+
+    &__bottom-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+    }
+
+    &__policy {
+        @apply font-kicker;
+        font-size: var(--size-300);
+        letter-spacing: 0.08em;
+        color: rgba(237, 231, 220, 0.35);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--color-gold);
+        }
+    }
+}

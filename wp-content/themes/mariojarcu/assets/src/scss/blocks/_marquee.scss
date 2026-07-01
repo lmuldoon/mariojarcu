@@ -1,0 +1,48 @@
+// =============================================
+// MARQUEE STRIP — infinite scrolling ticker
+// =============================================
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.marquee {
+    background-color: var(--color-gold);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    // Pause on hover — gives the user a moment to read if they want to
+    &:hover .marquee__track {
+        animation-play-state: paused;
+    }
+
+    &__track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        padding-block: 1rem;
+
+        // Shift by -50% = exactly one full copy's width, so the loop seam
+        // is invisible. Duration sets perceived speed — longer = slower.
+        animation: marquee-scroll 28s linear infinite;
+    }
+
+    &__word {
+        @apply font-kicker;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--color-gold-on);
+        white-space: nowrap;
+        padding-inline: 1.5rem;
+    }
+
+    &__star {
+        color: var(--color-gold-dark);
+        font-size: 11px;
+        flex-shrink: 0;
+    }
+}

@@ -1,0 +1,92 @@
+.opening-times {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(237, 231, 220, 0.1);
+
+    &__heading {
+        @apply font-kicker;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        padding-block: 1rem;
+        margin: 0;
+    }
+
+    &__row {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding-block: 0.6rem;
+        border-bottom: 1px solid rgba(237, 231, 220, 0.1);
+        position: relative;
+        transition: background 0.2s ease;
+        justify-content: space-between;
+
+        // Today — gold left accent
+        &.is-today {
+            &::before {
+                content: '';
+                position: absolute;
+                left: -1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 3px;
+                height: 60%;
+                background: var(--color-gold);
+            }
+
+            .opening-times__day {
+                color: var(--color-gold);
+            }
+
+            .opening-times__time {
+                color: var(--color-gold);
+            }
+        }
+
+        // Closed days — muted
+        &.is-closed {
+            .opening-times__day,
+            .opening-times__time {
+                //opacity: 0.3;
+            }
+        }
+    }
+
+    &__day {
+        @apply font-kicker;
+        font-size: var(--size-300);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-white);
+        flex-shrink: 0;
+        min-width: 7rem;
+        transition: color 0.2s ease;
+    }
+
+    &__date {
+        font-family: var(--font-body);
+        font-size: 0.85em;
+        font-weight: 400;
+        letter-spacing: normal;
+        text-transform: none;
+        color: rgba(237, 231, 220, 0.45);
+    }
+
+    &__dots {
+        flex: 1;
+        //border-bottom: 1px dotted rgba(201, 150, 47, 0.25);
+        margin-bottom: 0.25em;
+        display: none;
+    }
+
+    &__time {
+        @apply font-heading;
+        font-style: italic;
+        font-size: var(--size-400);
+        color: var(--color-white);
+        flex-shrink: 0;
+        line-height: 1;
+        transition: color 0.2s ease;
+    }
+}

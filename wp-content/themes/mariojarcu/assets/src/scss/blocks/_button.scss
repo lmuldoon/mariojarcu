@@ -1,0 +1,61 @@
+%button,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 1.1em 2.1em;
+    border-radius: 3px;
+    background-color: var(--color-gold);
+    color: var(--color-gold-on);
+    border: 1px solid var(--color-gold);
+    // transform is intentionally excluded here — see &:hover. A scroll-reveal
+    // animation (GSAP) also drives transform on some buttons (e.g. when a
+    // button is a direct child of an .animated container); keeping an
+    // unconditional CSS transition on the same property fights that JS
+    // animation and produces a visible "down then up" stutter.
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+        background-color: var(--color-gold-bright);
+        border-color: var(--color-gold-bright);
+        transform: translateY(-1px);
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    &--outline {
+        background-color: transparent;
+        color: var(--color-white);
+        border-color: rgba(237, 231, 220, 0.4);
+
+        &:hover {
+            background-color: var(--color-white);
+            color: var(--color-ink-text);
+            border-color: var(--color-white);
+            transform: translateY(-1px);
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+    }
+
+    &--white {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border-color: var(--color-white);
+
+        &:hover {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            border-color: var(--color-black);
+            transform: translateY(-1px);
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+    }
+}

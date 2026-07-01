@@ -1,0 +1,14 @@
+.kicker {
+    @apply font-kicker font-medium;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    margin-bottom: 1rem;
+    + * {
+        margin:0 !important;
+    }
+    .bg-black &,.hero & {
+        color: var(--color-gold);
+    }
+}

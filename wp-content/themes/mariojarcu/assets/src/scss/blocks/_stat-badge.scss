@@ -1,0 +1,52 @@
+// =============================================
+// STAT BADGE — overlaps the bottom-left corner of the About portrait
+// =============================================
+
+.stat-badge-wrap {
+    position: relative;
+    margin: 0;
+
+    // The badge intentionally overlaps ~22px below the image's bottom edge
+    // (see .stat-badge below). On the stacked single-column layout that's
+    // not enough clearance before the content block underneath — add extra
+    // room there. Side-by-side at the lg breakpoint, image and content
+    // aren't stacked vertically, so no extra space is needed.
+    margin-bottom: 2.5rem;
+
+    @screen lg {
+        margin-bottom: 0;
+    }
+}
+
+.stat-badge {
+    position: absolute;
+    left: -22px;
+    bottom: -22px;
+    background-color: var(--color-black);
+    padding: 22px 28px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    &__number {
+        @apply font-heading;
+        font-weight: 800;
+        font-size: 34px;
+        color: var(--color-gold);
+        line-height: 1;
+    }
+
+    &__plus {
+        font-size: 20px;
+    }
+
+    &__label {
+        @apply font-kicker;
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-white);
+        line-height: 1.4;
+    }
+}
