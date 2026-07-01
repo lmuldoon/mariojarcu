@@ -35,7 +35,7 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 		<link rel="preconnect" href="https://www.googletagmanager.com">
 		<!-- Google Analytics -->
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1WPMXV6TRZ"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-7YPDG6FQ87"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 
@@ -44,7 +44,7 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 			}
 			gtag('js', new Date());
 
-			gtag('config', 'G-1WPMXV6TRZ');
+			gtag('config', 'G-7YPDG6FQ87');
 		</script>
 
 	<?php endif; ?>
@@ -62,10 +62,10 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 				<?php include_asset('images/logos/logo-lockup-dark.svg'); ?>
 			</a>
 			<div class="flex gap-10">
-			<?php get_template_part('template-parts/site-nav'); ?>
-			<div class="site-header__actions">
-				<a class="site-header__book-btn" href="<?php echo esc_url( get_permalink( 175 ) ); ?>">Book Now</a>
-			</div>
+				<?php get_template_part('template-parts/site-nav'); ?>
+				<div class="site-header__actions">
+					<a class="site-header__book-btn" href="<?php echo esc_url(get_permalink(175)); ?>">Book Now</a>
+				</div>
 			</div>
 		</div>
 	</header> <!-- /.site-header -->
