@@ -32,6 +32,6 @@ $services = mj26_get_featured_services();
     <?php endforeach; ?>
 </div>
 
-<div class="card-grid__footer">
+<div class="card-grid__footer animated">
     <a class="button button--outline" href="<?php echo $book_url; ?>" <?php echo $book_target ? 'target="' . $book_target . '"' : ''; ?>><?php echo esc_html( $book_label ); ?> &rarr;</a>
 </div>
