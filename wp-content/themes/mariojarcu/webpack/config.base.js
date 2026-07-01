@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Extracts the
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin') // Synchronising URLs, interactions and code changes across devices
 const WebpackBar = require('webpackbar'); // Display elegant progress bar while building or watch
 //const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin'); // To optimize (compress) all images using
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts"); // webpack 5 replacement for webpack-fix-style-only-entries
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
@@ -109,7 +109,7 @@ module.exports = (projectOptions) => {
             filename: projectOptions.projectCss[ 'filename' + (process.env.NODE_ENV !== 'production' ? '_dev' : '') ]
         }),
         new CleanWebpackPlugin(),
-        new FixStyleOnlyEntriesPlugin(),
+        new RemoveEmptyScriptsPlugin(),
         new WebpackManifestPlugin({
             publicPath: 'assets/public',
         }),

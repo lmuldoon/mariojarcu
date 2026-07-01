@@ -1,12 +1,7 @@
 {
-  "footer.js": "assets/public/js/footer.min.js",
-  "header.js": "assets/public/js/header.min.js",
-  "google_maps.js": "assets/public/js/google_maps.min.js",
-  "screen.css": "assets/public/css/screen.min.css",
-  "print.css": "assets/public/css/print.min.css",
-  "footer.min.js.map": "assets/public/js/footer.min.js.map",
-  "header.min.js.map": "assets/public/js/header.min.js.map",
-  "google_maps.min.js.map": "assets/public/js/google_maps.min.js.map",
-  "screen.min.css.map": "assets/public/css/screen.min.css.map",
-  "print.min.css.map": "assets/public/css/print.min.css.map"
+  "footer.js": "assets/public/js/footer.a4e91fb16e6b15c231e7.min.js",
+  "header.js": "assets/public/js/header.e5af53cf306b5ee9486c.min.js",
+  "google_maps.js": "assets/public/js/google_maps.dce1ec5f1351da853db9.min.js",
+  "screen.css": "assets/public/css/screen.6d75c5448b7fab8e2f52.min.css",
+  "print.css": "assets/public/css/print.f4202db2f9d2498a78e2.min.css"
 }
