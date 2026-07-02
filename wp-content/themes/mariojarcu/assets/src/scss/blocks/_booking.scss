@@ -67,46 +67,24 @@
         font-size: 12px;
     }
 
-    &__frame {
-        position: relative;
-        background-color: var(--color-white);
-        border: 1px solid rgba(237, 231, 220, 0.15);
+    // Wrapper for the Booksy inline widget script.
+    // The script injects a .booksy-widget-container div + iframe before itself.
+    &__widget {
         border-radius: 8px;
         overflow: hidden;
-        min-height: 760px;
-    }
+        min-height: 200px;
 
-    &__fallback {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        text-align: center;
-        padding: 2rem;
-
-        img {
-            opacity: 0.55;
+        // Booksy injects its own container class — ensure it fills our wrapper.
+        .booksy-widget-container {
+            width: 100%;
         }
 
-        p {
-            font-family: var(--font-body);
-            font-size: 16px;
-            color: var(--color-muted);
-            margin: 0;
+        // The iframe Booksy creates — make it fill available width.
+        iframe {
+            width: 100% !important;
+            border: 0;
+            display: block;
         }
-    }
-
-    &__iframe {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        height: 760px;
-        border: 0;
-        background: transparent;
     }
 
     &__note {

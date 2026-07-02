@@ -3,16 +3,15 @@
 /**
  * Template Name: Booking
  *
- * Booksy booking embed.
- *
- * TODO: replace $booksy_url below with Mario's real embeddable Booksy
- * widget URL (Booksy → Boost → Website widget) — the public profile
- * link will not embed.
+ * Booksy booking embed — uses Booksy's official widget script in
+ * `mode=inline` so the full booking calendar appears directly on the
+ * page. Booksy blocks raw iframe embedding (X-Frame-Options: DENY) but
+ * their own widget script creates an internal iframe that IS allowed.
  */
 
 get_header();
 
-$booksy_url = 'https://mariojarcusalonconcept.booksy.com/a/';
+$booksy_profile_url = 'https://booksy.com/en-gb/dl/show-business/138519';
 
 ?>
 
@@ -45,21 +44,17 @@ $booksy_url = 'https://mariojarcusalonconcept.booksy.com/a/';
 			<div class="booking-embed__status">
 				<span class="booking-embed__status-dot"></span>
 				<span class="booking-embed__status-text">Live availability via Booksy</span>
-				<a class="button button--outline booking-embed__open-link" href="<?php echo esc_url( $booksy_url ); ?>" target="_blank" rel="noopener noreferrer">Open in Booksy &#8599;</a>
+				<a class="button button--outline booking-embed__open-link" href="<?php echo esc_url( $booksy_profile_url ); ?>" target="_blank" rel="noopener noreferrer">Open in Booksy &#8599;</a>
 			</div>
 
-			<div class="booking-embed__frame">
-				<div class="booking-embed__fallback">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'images/logos/logo-v3-light.svg' ) ); ?>" alt="" height="62" />
-					<p>Loading the booking calendar&hellip;</p>
-					<a class="button" href="<?php echo esc_url( $booksy_url ); ?>" target="_blank" rel="noopener noreferrer">Book on Booksy</a>
-				</div>
-				<iframe
-					src="<?php echo esc_url( $booksy_url ); ?>"
-					title="Book with Mario Jarcu on Booksy"
-					loading="lazy"
-					class="booking-embed__iframe"
-				></iframe>
+			<div class="booking-embed__widget">
+				<!-- Booksy inline widget — renders the full booking calendar directly.
+				     mode=inline embeds it on-page; Booksy's own script creates an
+				     internal iframe that is not blocked by their X-Frame-Options policy. -->
+				<script
+					type="text/javascript"
+					src="https://booksy.com/widget/code.js?id=138519&country=gb&lang=en-GB&mode=inline"
+				></script>
 			</div>
 
 			<p class="booking-embed__note">Secure booking powered by Booksy. You'll get a confirmation by email or text once your appointment is set.</p>
