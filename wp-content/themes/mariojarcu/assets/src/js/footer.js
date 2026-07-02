@@ -1,6 +1,7 @@
 import './scripts/__tools';
 import initReviewsCarousel from './scripts/init.swiper';
 import initGalleryLightbox from './scripts/gallery-lightbox';
+import initLazyMap from './scripts/lazy-map';
 import {
     initAnimations,
     getAnchorScrollOffset,
@@ -29,6 +30,7 @@ whenFontsReady(initAnimations);
 document.addEventListener('DOMContentLoaded', () => {
     initReviewsCarousel();
     initGalleryLightbox();
+    initLazyMap();
 });
 
 (function ($) {

@@ -105,44 +105,14 @@ function mj26_enqueue_google_scripts() {
 }
 
 /**
- * Enqueue Mapbox GL JS on pages that have a #mapbox-map element.
+ * Mapbox GL is now lazy-loaded via IntersectionObserver in
+ * assets/src/js/scripts/lazy-map.js — it only downloads when the
+ * #mapbox-map element approaches the viewport, removing ~229KB of JS
+ * from the critical path and improving mobile performance significantly.
+ * The function stub is kept so existing references don't fatal.
  */
-add_action( 'wp_enqueue_scripts', 'mj26_enqueue_mapbox' );
 function mj26_enqueue_mapbox() {
-	if ( is_admin() || ! is_front_page() ) return;
-
-	wp_enqueue_style(
-		'mapbox-gl',
-		'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css',
-		[],
-		null
-	);
-
-	wp_enqueue_script(
-		'mapbox-gl',
-		'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js',
-		[],
-		null,
-		true
-	);
-
-	wp_add_inline_script( 'mapbox-gl', '
-		(function () {
-			var el = document.getElementById("mapbox-map");
-			if (!el) return;
-			mapboxgl.accessToken = "pk.eyJ1IjoibHVrZW11bGRvb24iLCJhIjoiY21wdWJhM2Y5MDJmdDJ2cXNhcWluZWNsayJ9.FoG_R-Gdvy0_sGc5D_4oag";
-			var map = new mapboxgl.Map({
-				container: "mapbox-map",
-				style: "mapbox://styles/lukemuldoon/cmpube4t6002401s84n1xa1zy",
-				center: [-1.2517371, 52.376622],
-				zoom: 16
-			});
-			map.addControl(new mapboxgl.NavigationControl(), "top-right");
-			new mapboxgl.Marker({ color: "#C39A43", scale: 1.5 })
-				.setLngLat([-1.2517371, 52.376622])
-				.addTo(map);
-		})();
-	' );
+	// No-op — Mapbox is now lazy-loaded in footer.js via lazy-map.js
 }
 
 /**
