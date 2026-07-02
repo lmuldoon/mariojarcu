@@ -23,10 +23,24 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 	<!-- End Favicons -->
 
 	<?php
+	// Preload critical Montserrat weights — font-display:swap causes all text
+	// to reflow when Montserrat loads (FOUT), which registers as CLS. Preloading
+	// ensures the fonts are available before the first paint, eliminating the swap.
+	// crossorigin="anonymous" is required even for same-origin fonts to avoid a
+	// double-fetch (the browser opens a separate CORS-enabled connection for fonts).
+	$font_base      = get_theme_file_uri( 'assets/fonts/' );
+	$critical_fonts = [
+		'montserrat-v31-latin-regular.woff2',
+		'montserrat-v31-latin-700.woff2',
+		'montserrat-v31-latin-800.woff2',
+	];
+	foreach ( $critical_fonts as $font ) : ?>
+		<link rel="preload" as="font" type="font/woff2" href="<?php echo esc_url( $font_base . $font ); ?>" crossorigin="anonymous" />
+	<?php endforeach; ?>
+
+	<?php
 	// Preload the hero background image on the front page so the browser
-	// fetches it in parallel with the HTML rather than after CSS is parsed —
-	// this is the LCP element and the biggest single opportunity to improve
-	// the Largest Contentful Paint score.
+	// fetches it in parallel with the HTML rather than after CSS is parsed.
 	if ( is_front_page() ) :
 		$hero           = get_field( 'hero', get_option( 'page_on_front' ) ) ?: [];
 		$hero_image_id  = $hero['image'] ?? '';
