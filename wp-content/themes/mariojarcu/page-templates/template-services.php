@@ -27,12 +27,12 @@ foreach ( $services as $service ) {
 		<div class="container container--narrow">
 			<div class="price-list__columns animated">
 				<?php $i = 0; foreach ( $groups as $group_name => $group_services ) : $i++; ?>
-					<div class="price-group">
+					<div class="price-group animated">
 						<div class="price-group__header">
 							<span class="kicker"><?php echo esc_html( sprintf( '%02d', $i ) ); ?> &mdash; <?php echo esc_html( $group_name ); ?></span>
 							<span class="price-group__rule"></span>
 						</div>
-						<div class="price-group__list">
+						<div class="price-group__list animated">
 							<?php foreach ( $group_services as $service ) : ?>
 								<div class="price-row">
 									<div class="price-row__info">
