@@ -5,7 +5,7 @@
 .page-banner {
     background-color: var(--color-black);
     border-bottom: 1px solid rgba(237, 231, 220, 0.1);
-    padding-block: calc(clamp(3rem, 7vw, 5rem) + var(--header-height)) clamp(3rem, 7vw, 5rem);
+    padding-block: clamp(3rem, 7vw, 5rem) clamp(3rem, 7vw, 5rem);
 
     &__title {
         @apply font-heading;
