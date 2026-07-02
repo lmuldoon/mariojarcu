@@ -14,10 +14,11 @@
         gap: 3rem;
         align-items: start;
         padding-bottom: 3rem;
-
+        text-align: center;
         @screen md {
             grid-template-columns: 1.75fr 1fr 1fr 1fr;
             gap: 2rem;
+            text-align:left;
         }
     }
 
@@ -47,7 +48,9 @@
         font-size: var(--size-400);
         color: rgba(237, 231, 220, 0.55);
         line-height: 1.6;
-        max-width: 28ch;
+        @screen md {
+            max-width: 28ch;
+        }
     }
 
     // --- Columns ---

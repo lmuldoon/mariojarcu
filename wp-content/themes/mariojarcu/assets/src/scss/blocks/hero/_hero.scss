@@ -6,7 +6,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     padding-bottom: clamp(3rem, 7vw, 6rem);
-
+    padding-block-start: calc(clamp(var(--min-padding-block-start), var(--size), 2000px) + var(--header-height));
     // Overlay so text remains legible against the image, fading to the page ink color
     &::before {
         content: '';
