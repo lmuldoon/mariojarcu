@@ -22,6 +22,9 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 
 	<!-- End Favicons -->
 
+	<link rel="preconnect" href="https://api.mapbox.com" />
+	<link rel="preconnect" href="https://events.mapbox.com" />
+
 	<?php
 	// Preload critical Montserrat weights — font-display:swap causes all text
 	// to reflow when Montserrat loads (FOUT), which registers as CLS. Preloading
