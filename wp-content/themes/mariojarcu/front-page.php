@@ -102,7 +102,9 @@ $location = get_field('location') ?: [];
 						$location_link_label  = ! empty($location_link['title']) ? $location_link['title'] : 'Book an appointment';
 						$location_link_target = ! empty($location_link['target']) ? esc_attr($location_link['target']) : '';
 						?>
+						<div class="mt-8 mb-8">
 						<a class="button" href="<?php echo $location_link_url; ?>" <?php echo $location_link_target ? 'target="' . $location_link_target . '"' : ''; ?>><?php echo esc_html($location_link_label); ?></a>
+						</div>
 					</div>
 					<div class="flow js-reveal animated">
 						<div id="mapbox-map" class="location-map"></div>

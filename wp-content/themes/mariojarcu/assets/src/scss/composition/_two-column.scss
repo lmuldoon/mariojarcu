@@ -1,7 +1,7 @@
 .two-col {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--block-padding);
+    gap: calc(var(--block-padding) * 2);
 
     @screen md {
         grid-template-columns: 1fr 1fr;
