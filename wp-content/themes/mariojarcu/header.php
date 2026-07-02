@@ -33,7 +33,7 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 		'montserrat-v31-latin-regular.woff2',
 		'montserrat-v31-latin-700.woff2',
 		'montserrat-v31-latin-800.woff2',
-	];
+	]; 
 	foreach ( $critical_fonts as $font ) : ?>
 		<link rel="preload" as="font" type="font/woff2" href="<?php echo esc_url( $font_base . $font ); ?>" crossorigin="anonymous" />
 	<?php endforeach; ?>
