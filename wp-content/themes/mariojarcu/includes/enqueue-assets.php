@@ -46,13 +46,13 @@ function mj26_enqueue_scripts() {
 		/**
 		 * Load header scripts.
 		 * No dependancies, in header -> default for wp_register_script().
+		 * Note: no file_exists() guard here — in production webpack hashes the
+		 * filename (header.abc123.min.js), so the unhashed path won't exist on
+		 * disk. mj26_revision_assets() rewrites the URL via manifest.json, the
+		 * same way footer_js and the stylesheets are handled.
 		 */
-		$theme_root = trailingslashit(get_theme_file_path());
-		$header_js_path = 'assets/public/js/header.min.js';
-		if ( file_exists($theme_root.'assets/public/js/header.min.js') && is_readable($theme_root.'assets/public/js/header.min.js') ) {
-			wp_register_script ( 'header_js', get_theme_file_uri( 'assets/public/js/header.min.js' ) );
-			wp_enqueue_script ( 'header_js' );
-		}
+		wp_register_script ( 'header_js', get_theme_file_uri( 'assets/public/js/header.min.js' ) );
+		wp_enqueue_script ( 'header_js' );
 		
 		/**
 		 * Load footer scripts

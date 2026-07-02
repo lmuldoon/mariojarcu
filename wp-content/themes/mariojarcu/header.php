@@ -22,6 +22,21 @@ $IS_LIVE = preg_match($re, $_SERVER['SERVER_NAME'] ?? '');
 
 	<!-- End Favicons -->
 
+	<?php
+	// Preload the hero background image on the front page so the browser
+	// fetches it in parallel with the HTML rather than after CSS is parsed —
+	// this is the LCP element and the biggest single opportunity to improve
+	// the Largest Contentful Paint score.
+	if ( is_front_page() ) :
+		$hero           = get_field( 'hero', get_option( 'page_on_front' ) ) ?: [];
+		$hero_image_id  = $hero['image'] ?? '';
+		$hero_image_url = $hero_image_id ? wp_get_attachment_image_url( $hero_image_id, 'full' ) : '';
+		if ( $hero_image_url ) : ?>
+			<link rel="preload" as="image" href="<?php echo esc_url( $hero_image_url ); ?>" fetchpriority="high" />
+		<?php endif;
+	endif;
+	?>
+
 	<?php wp_head(); ?>
 
 	<script>
