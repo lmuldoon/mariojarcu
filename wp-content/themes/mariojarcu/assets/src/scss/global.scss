@@ -21,9 +21,9 @@ html {
 // visible (and possibly wrong-font) content before the reveal animation
 // runs. Scoped to .js (toggled on <html> by the inline script in header.php)
 // so content stays visible as normal if JavaScript is disabled.
-.js .animated > * {
-	opacity: 0;
-}
+// .js .animated > * {
+// 	opacity: 0;
+// }
 
 body {
 	@apply font-body  leading-regular;
