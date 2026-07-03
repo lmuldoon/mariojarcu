@@ -179,15 +179,17 @@ if ( !class_exists( 'RPT_service' ) ) {
 		private function _registerTaxonomy( $taxonomy_slug, $singular_label, $plural_label ) {
 			$args = array(
 				// Makes the quick edit show checkboxes instead of text input
-		    'hierarchical' => true,
-		    'labels' => $this->_getTaxonomyLabels( $singular_label, $plural_label ),
+		    'hierarchical'      => true,
+		    'labels'            => $this->_getTaxonomyLabels( $singular_label, $plural_label ),
 		    'show_admin_column' => true,
-		    'query_var' => true,
-		    // Rewrite the permalink displayed if needed
-		    'rewrite' => array(
-		      'slug' => $taxonomy_slug,
-		      'with_front' => false,
-		    )
+		    'query_var'         => false,
+		    // No public URLs — this taxonomy is admin-only for grouping
+		    // private post types. Setting public:false + rewrite:false stops
+		    // Yoast from generating sitemap entries and makes any direct URL
+		    // return a 404.
+		    'public'            => false,
+		    'publicly_queryable' => false,
+		    'rewrite'           => false,
 			);
 
 		  register_taxonomy( $taxonomy_slug, $this->post_type, $args );
