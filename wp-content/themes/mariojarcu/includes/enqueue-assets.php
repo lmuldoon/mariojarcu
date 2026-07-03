@@ -44,6 +44,13 @@ function mj26_enqueue_scripts() {
 		wp_enqueue_script( 'jquery' );
 
 		/**
+		 * Shared vendor chunk (GSAP, Swiper) extracted by webpack SplitChunksPlugin.
+		 * Must load before header_js and footer_js which depend on it.
+		 */
+		wp_register_script( 'vendors_js', get_theme_file_uri( 'assets/public/js/vendors.min.js' ), [], false, false );
+		wp_enqueue_script( 'vendors_js' );
+
+		/**
 		 * Load header scripts.
 		 * No dependancies, in header -> default for wp_register_script().
 		 * Note: no file_exists() guard here — in production webpack hashes the
@@ -51,7 +58,7 @@ function mj26_enqueue_scripts() {
 		 * disk. mj26_revision_assets() rewrites the URL via manifest.json, the
 		 * same way footer_js and the stylesheets are handled.
 		 */
-		wp_register_script ( 'header_js', get_theme_file_uri( 'assets/public/js/header.min.js' ) );
+		wp_register_script ( 'header_js', get_theme_file_uri( 'assets/public/js/header.min.js' ), [ 'vendors_js' ] );
 		wp_enqueue_script ( 'header_js' );
 		
 		/**
@@ -60,7 +67,7 @@ function mj26_enqueue_scripts() {
 		 * false -> No version string (versions will be revisioned by Gulp.js)
 		 * true  -> Load in footer
 		 */
-		wp_register_script ( 'footer_js', get_theme_file_uri( 'assets/public/js/footer.min.js' ), array( 'jquery' ), false, true );
+		wp_register_script ( 'footer_js', get_theme_file_uri( 'assets/public/js/footer.min.js' ), array( 'jquery', 'vendors_js' ), false, true );
 		$footer_js_args = array(
 			'template_directory_uri' => trailingslashit(get_template_directory_uri()),
 			'stylesheet_directory_uri' => trailingslashit(get_stylesheet_directory_uri()),
@@ -70,6 +77,17 @@ function mj26_enqueue_scripts() {
 
 	}
 }
+
+/**
+ * Defer header_js — it only runs on DOMContentLoaded so deferring is safe
+ * and removes it from the render-blocking critical path.
+ */
+add_filter( 'script_loader_tag', function( $tag, $handle ) {
+	if ( 'header_js' === $handle ) {
+		return str_replace( '<script ', '<script defer ', $tag );
+	}
+	return $tag;
+}, 10, 2 );
 
 /**
  * Register and enqueue Google Maps scripts for pages that require it.

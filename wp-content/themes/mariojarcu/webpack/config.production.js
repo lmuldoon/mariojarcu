@@ -66,6 +66,17 @@ module.exports = (projectOptions) => {
         ...Base.optimizations,
         ...{
             minimize: true,
+            splitChunks: {
+                chunks: 'all',
+                cacheGroups: {
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all',
+                        priority: 10,
+                    },
+                },
+            },
             minimizer: [
                 new CssMinimizerPlugin({
                     minimizerOptions: {
